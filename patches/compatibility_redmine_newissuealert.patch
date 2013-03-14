@@ -1,0 +1,49 @@
+From 5ccc156e74881a3e9477a23b119f19953a0b47ab Mon Sep 17 00:00:00 2001
+From: Jason Butz <jbutz@brake.com>
+Date: Thu, 14 Mar 2013 16:38:27 -0500
+Subject: [PATCH] redmine_newissuealerts compatibility
+
+---
+ init.rb                                            |   12 ++++++------
+ .../hooks/mailstatus_settings_tabs_hook.rb         |    2 +-
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/init.rb b/init.rb
+index b45ff11..6193016 100644
+--- a/init.rb
++++ b/init.rb
+@@ -1,12 +1,12 @@
+ require 'redmine'
+ 
+ # Patches to the Redmine core.
+-RedmineApp::Application.config.after_initialize do
+-  require_dependency 'projects_helper'
+-  unless ProjectsHelper.included_modules.include? RedmineMailstatus::ProjectsHelperPatch
+-    ProjectsHelper.send(:include, RedmineMailstatus::ProjectsHelperPatch)
+-  end
+-end
++#RedmineApp::Application.config.after_initialize do
++#  require_dependency 'projects_helper'
++#  unless ProjectsHelper.included_modules.include? RedmineMailstatus::ProjectsHelperPatch
++#    ProjectsHelper.send(:include, RedmineMailstatus::ProjectsHelperPatch)
++#  end
++#end
+ 
+ # Hooks
+ require_dependency 'redmine_mailstatus/hooks/controller_issues_edit_before_save_hook'
+diff --git a/lib/redmine_mailstatus/hooks/mailstatus_settings_tabs_hook.rb b/lib/redmine_mailstatus/hooks/mailstatus_settings_tabs_hook.rb
+index 626ce59..74e1ee4 100644
+--- a/lib/redmine_mailstatus/hooks/mailstatus_settings_tabs_hook.rb
++++ b/lib/redmine_mailstatus/hooks/mailstatus_settings_tabs_hook.rb
+@@ -1,7 +1,7 @@
+ module RedmineMailstatus
+   module Hooks
+     class MailstatusSettingsTabsHooks  < Redmine::Hook::ViewListener
+-      def mailstatus_settings_tabs(context = {})
++      def newissuealerts_settings_tabs(context = {})
+         @project = context[:project]
+         if @project.module_enabled?('mailstatus') and User.current.allowed_to?({:controller => :mailstatus, :action => :index}, context[:project])
+           context[:tabs].push({ :name    => 'mailstatus',
+-- 
+1.7.0.4
+
