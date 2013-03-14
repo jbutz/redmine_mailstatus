@@ -1,0 +1,19 @@
+<h2><%= t(:mailstatus_edit, :project => @project.name).html_safe %></h2>
+<%= form_for @mailstatus, 
+	:as => :mailstatus,
+	:method => :post,
+	:url => { :project_id => @project.identifier, :id => @mailstatus.id } do |f| %>
+  <%= error_messages_for 'mailstatus' %> 
+<div class="box tabular settings">
+  <p>
+    <%= f.label l(:begining_status) %>
+    <%= f.select :begin_status, (@issue_statuses.collect {|p| [p.name, p.id]}), {:required => true} %><br />
+  </p>
+  <p>
+    <%= f.label l(:ending_status) %>
+    <%= f.select :end_status, (@issue_statuses.collect {|p| [p.name, p.id]}), {:required => true} %><br /><br />
+  </p>
+  <p>  <%= submit_tag l(:save), :name => "save" %> <%= submit_tag l(:delete), :name => "delete", :confirm => l(:mailstatus_deletion_confirm) %> </p>
+</div>
+<% end %>
+

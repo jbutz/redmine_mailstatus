@@ -1,0 +1,24 @@
+<% can_new = User.current.allowed_to?(:new_mailstatus, @project) 
+can_edit = User.current.allowed_to?(:edit_mailstatus, @project)
+@mailstatus = Mailstatus.find(:all, :conditions => { :project_id => @project.id } )
+%>
+<h2><%= t(:mailstatus_index, :project => @project.name).html_safe %></h2>
+<% if can_new && @mailstatus.size < 1 %>
+<p>
+<%= link_to(l(:mailstatus_text), {:controller => 'mailstatus', :action => 'new', :project_id => @project.identifier}, :class => 'icon icon-add' ) %> 
+</p>
+<% end %>
+
+<% for mailstatus in @mailstatus %> 
+
+<div class="box tabular settings">
+<p><label><%= l(:begining_status) %>:</label> <%= IssueStatus.where(:id => mailstatus.begin_status).first.name %></p>
+<p><label><%= l(:ending_status) %>:</label> <%= IssueStatus.where(:id => mailstatus.end_status).first.name %></p>
+<% if can_edit %>
+<p><%= link_to l(:edit_delete), {:controller => 'mailstatus', :action => 'edit', :id => mailstatus.id, :project_id => @project.identifier } %></p>
+<% end %>
+</div>
+<% end %> 
+
+<% puts @issue_statuses %>
+
