@@ -12,7 +12,7 @@ With this plugin you can specify a status, for example "New", and then whenever 
 
 ==Compatibility
 
-This plugin has been tested on 2.3.0.devel and _______
+This plugin has been tested on 2.3.0.devel, 2.2.3.stable and works. 2.2.x in general will probably work.
 
 ==Obtaining 
 
