@@ -1,4 +1,4 @@
-== Applying a Patch
+==Applying a Patch
 
 You must be in the root directory of the plugin to apply the patch.
 First you should check to make the sure patch can be applied cleanly. Below is an example:
@@ -9,7 +9,7 @@ If you don't get any errors then you are ok to proceed. Below is an example of a
 
     git apply patches/compatibility_redmine_newissuealert.patch
 
-== More Info
+==More Info
 
 Git Patching Information: https://ariejan.net/2009/10/26/how-to-create-and-apply-a-patch-with-git
 
