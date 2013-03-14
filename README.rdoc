@@ -14,14 +14,6 @@ With this plugin you can specify a status, for example "New", and then whenever 
 
 This plugin has been tested on 2.3.0.devel, 2.2.3.stable and works. 2.2.x in general will probably work.
 
-==Obtaining 
-
-<i>URL of the GitHub repository: http://github.com/chantra/redmine_newissuealerts/tree/master</i>
-
-The source of this plugin can be "cloned" from the GitHub-repo using:
-
-<tt>$ cd {RAILS_ROOT}/vendor/plugins && git clone git://github.com/chantra/redmine_newissuealerts.git</tt>
-
 ==Installation
 
 - Download the plugin from the available source (see http://www.redmine.org/wiki/redmine/PluginNewIssueAlerts#Obtaining)
