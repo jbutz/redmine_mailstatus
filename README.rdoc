@@ -14,11 +14,17 @@ With this plugin you can specify a status, for example "New", and then whenever 
 
 This plugin has been tested on 2.3.0.devel, 2.2.3.stable and works. 2.2.x in general will probably work.
 
+===Compatibility Issues
+
+If you use another plugin that adds a tab to the settings portion of a project there is a good chance you will get a 500 Error when accessing the settings for all projects. To fix this you need to change the hook being used.
+
+In the case of the redmine_newissuealerts plugin you must go into <tt>plugins/redmine_mailstatus/hooks/mailstatus_settings_tabs_hook.rb</tt> and change <tt>mailstatus_settings_tabs</tt> to <tt>newissuealerts_settings_tabs</tt> and you must comment or remove everything in the <tt>plugins/redmine_mailstatus/init.rb</tt> file that is after <tt>require 'redmine'</tt> and before <tt>require_dependency</tt>
+
 ==Installation
 
 - Download the plugin from the available source (see http://www.redmine.org/wiki/redmine/PluginNewIssueAlerts#Obtaining)
 - Install the plugin as described at: http://www.redmine.org/wiki/redmine/Plugins (<b>this plugin does require a plugin database migration</b>)
-- Migrate your plugin database scheme using <tt>rake db:migrate_plugins RAILS_ENV="production"</tt>
+- Migrate your plugin database scheme using <tt>rake redmine:plugins:migrate RAILS_ENV="production"</tt>
 - Restart Redmine
 
 ==Usage

@@ -2,20 +2,13 @@ require 'redmine'
 
 # Patches to the Redmine core.
 RedmineApp::Application.config.after_initialize do
-#  require_dependency 'issue'
-#  # Guards against including the module multiple time (like in tests)
-#  # and registering multiple callbacks
-#  unless Issue.included_modules.include? RedmineMailstatus::IssuePatch
-#    Issue.send(:include, RedmineMailstatus::IssuePatch)
-#  end
-#
   require_dependency 'projects_helper'
   unless ProjectsHelper.included_modules.include? RedmineMailstatus::ProjectsHelperPatch
     ProjectsHelper.send(:include, RedmineMailstatus::ProjectsHelperPatch)
   end
 end
 
-# It requires the file in lib/redmine_mailstatus/hooks.rb
+# Hooks
 require_dependency 'redmine_mailstatus/hooks/controller_issues_edit_before_save_hook'
 require_dependency 'redmine_mailstatus/hooks/mailstatus_settings_tabs_hook'
 
