@@ -25,7 +25,7 @@ Redmine::Plugin.register :redmine_mailstatus do
   description 'If an e-mail is recived then the status can be updated.'
   version '0.0.1'
   author_url 'http://www.jasonbutz.info'
-  url 'http://www.google.com'
+  url 'https://github.com/jbutz/redmine_mailstatus'
   
   # This plugin adds a project module
   # It can be enabled/disabled at project level (Project settings -> Modules)
